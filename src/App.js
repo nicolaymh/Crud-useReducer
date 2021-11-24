@@ -1,11 +1,30 @@
+import { useReducer } from 'react';
+import {
+    initialStatePersonas,
+    personasReducer,
+} from './personasReducer/personasReducer';
 import './styles/App.css';
 
-function App() {
+const App = () => {
+    const [personas, dispatch] = useReducer(
+        personasReducer,
+        initialStatePersonas,
+    );
+
     return (
         <div>
-            <h1>Iniciando</h1>
+            <h1>Agregar Persona</h1>
+            <hr />
+
+            <form>
+                <input
+                    type='text'
+                    placeholder='nombre'
+                    autoComplete='off'
+                ></input>
+            </form>
         </div>
     );
-}
+};
 
 export default App;
