@@ -5,7 +5,7 @@ export const initialStatePersonas = [];
 export const personasReducer = (personas, action) => {
     switch (action.type) {
         case PERSONAS_TYPES.ADD:
-            return;
+            return [...personas, action.payload];
 
         case PERSONAS_TYPES.DELETE:
             return;
