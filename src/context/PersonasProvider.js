@@ -1,11 +1,10 @@
 import { createContext, useReducer } from 'react';
-import { initialStateForm } from '../helpers/helpers';
+import { functions, initialStateForm } from '../helpers/helpers';
 import { useForm } from '../hooks/useForm';
 import {
     initialStatePersonas,
     personasReducer,
 } from '../personasReducer/personasReducer';
-import { PERSONAS_TYPES } from '../personasAction/personasAction.';
 
 const PersonasContext = createContext();
 
@@ -16,25 +15,16 @@ const PersonasProvider = ({ children }) => {
         initialStatePersonas,
     );
 
+    //* LLamando al customHook useForm para manejar los inputs:
     const { stateForm, setStateForm, handleInputChange } =
         useForm(initialStateForm);
-    const { nombres, apellidos } = stateForm;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const nuevaPersona = {
-            id: new Date().getTime(),
-            nombres,
-            apellidos,
-        };
-
-        dispatch({ type: PERSONAS_TYPES.ADD, payload: nuevaPersona });
-
-        setStateForm(initialStateForm);
-    };
-
-    const handleDelete = () => {};
+    //* Separando funciones a archivo helper: handleSubmit y handleDelete:
+    const { handleSubmit, handleDelete } = functions(
+        stateForm,
+        setStateForm,
+        dispatch,
+    );
 
     const data = {
         stateForm,

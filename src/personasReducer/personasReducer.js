@@ -8,7 +8,9 @@ export const personasReducer = (personas, action) => {
             return [...personas, action.payload];
 
         case PERSONAS_TYPES.DELETE:
-            return;
+            return personas.filter(
+                (personas) => personas.id !== action.payload,
+            );
 
         default:
             return personas;

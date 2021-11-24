@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { PersonasContext } from '../context/PersonasProvider';
+import { ListaPersonas } from './ListaPersonas';
 
 const CrudApp = () => {
     const {
@@ -39,14 +40,15 @@ const CrudApp = () => {
                 ></input>
 
                 <button type='submit'>Add</button>
-                <button onClick={handleDelete}>Delete</button>
             </form>
 
             <ul>
-                {personas.map((persona, index) => (
-                    <li key={index}>
-                        {persona.nombres} {persona.apellidos}
-                    </li>
+                {personas.map((persona) => (
+                    <ListaPersonas
+                        key={persona.id}
+                        persona={persona}
+                        handleDelete={handleDelete}
+                    />
                 ))}
             </ul>
         </div>
