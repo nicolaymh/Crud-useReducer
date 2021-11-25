@@ -6,25 +6,47 @@ export const initialStateForm = {
     apellidos: '',
 };
 
-export const functions = (stateForm, setStateForm, dispatch) => {
+export const functions = (
+    stateForm,
+    setStateForm,
+    dispatch,
+    stateAddEdit,
+    setStateAddEdit,
+) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const { nombres, apellidos } = stateForm;
+        const { id, nombres, apellidos } = stateForm;
 
-        const nuevaPersona = {
+        const nuevaPersonaAdd = {
             id: new Date().getTime(),
             nombres,
             apellidos,
         };
 
-        dispatch({ type: PERSONAS_TYPES.ADD, payload: nuevaPersona });
+        const nuevaPersonaEdit = {
+            id,
+            nombres,
+            apellidos,
+        };
 
-        setStateForm(initialStateForm);
+        if (!stateAddEdit) {
+            dispatch({ type: PERSONAS_TYPES.ADD, payload: nuevaPersonaAdd });
+            setStateForm(initialStateForm);
+        } else {
+            dispatch({
+                type: PERSONAS_TYPES.EDITAR,
+                payload: nuevaPersonaEdit,
+            });
+            setStateForm(initialStateForm);
+            setStateAddEdit(false);
+        }
     };
 
     const handleDelete = (idPersona) => {
         dispatch({ type: PERSONAS_TYPES.DELETE, payload: idPersona });
+        setStateAddEdit(false);
+        setStateForm(initialStateForm);
     };
 
     const handleEdit = (idPersona, nombres, apellidos) => {
@@ -33,6 +55,8 @@ export const functions = (stateForm, setStateForm, dispatch) => {
             nombres,
             apellidos,
         });
+
+        setStateAddEdit(!stateAddEdit);
     };
 
     return { handleSubmit, handleDelete, handleEdit };
