@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from 'react';
+import { createContext, useReducer, useRef, useState } from 'react';
 import { functions, initialStateForm } from '../helpers/helpers';
 import { useForm } from '../hooks/useForm';
 import {
@@ -9,6 +9,8 @@ import {
 const PersonasContext = createContext();
 
 const PersonasProvider = ({ children }) => {
+    const formRef = useRef();
+
     //? useReducer para manejar los estados y acciones:
     const [personas, dispatch] = useReducer(
         personasReducer,
@@ -28,6 +30,7 @@ const PersonasProvider = ({ children }) => {
         dispatch,
         stateAddEdit,
         setStateAddEdit,
+        formRef,
     );
 
     //? la data para el context provider:
@@ -38,6 +41,7 @@ const PersonasProvider = ({ children }) => {
         handleSubmit,
         handleDelete,
         handleEdit,
+        formRef,
     };
 
     return (

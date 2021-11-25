@@ -6,12 +6,12 @@ export const Form = () => {
         stateForm: { nombres, apellidos },
         handleInputChange,
         handleSubmit,
+        formRef,
     } = useContext(PersonasContext);
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form ref={formRef} onSubmit={handleSubmit}>
             <input
-                id='1'
                 className=''
                 type='text'
                 placeholder='nombres'

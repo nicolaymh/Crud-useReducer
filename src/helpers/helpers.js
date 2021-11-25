@@ -12,6 +12,7 @@ export const functions = (
     dispatch,
     stateAddEdit,
     setStateAddEdit,
+    inputRef,
 ) => {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -57,6 +58,8 @@ export const functions = (
         });
 
         setStateAddEdit(!stateAddEdit);
+
+        inputRef.current.children[0].focus();
     };
 
     return { handleSubmit, handleDelete, handleEdit };
