@@ -4,7 +4,7 @@ import { Form } from './Form';
 import { ListaPersonas } from './ListaPersonas';
 
 const CrudApp = () => {
-    const { personas, handleDelete } = useContext(PersonasContext);
+    const { personas, handleDelete, handleEdit} = useContext(PersonasContext);
 
     return (
         <div>
@@ -19,6 +19,7 @@ const CrudApp = () => {
                         key={persona.id}
                         persona={persona}
                         handleDelete={handleDelete}
+                        handleEdit={handleEdit}
                     />
                 ))}
             </ul>

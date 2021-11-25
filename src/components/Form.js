@@ -11,6 +11,7 @@ export const Form = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input
+                id='1'
                 className=''
                 type='text'
                 placeholder='nombres'

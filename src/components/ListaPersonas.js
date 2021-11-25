@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ListaPersonas = ({ persona, handleDelete }) => {
+export const ListaPersonas = ({ persona, handleDelete, handleEdit }) => {
     return (
         <div>
             <li>
@@ -12,6 +12,13 @@ export const ListaPersonas = ({ persona, handleDelete }) => {
                 }}
             >
                 Delete
+            </button>
+            <button
+                onClick={() =>
+                    handleEdit(persona.id, persona.nombres, persona.apellidos)
+                }
+            >
+                Editar
             </button>
         </div>
     );

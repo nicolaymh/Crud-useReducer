@@ -6,7 +6,7 @@ export const initialStateForm = {
     apellidos: '',
 };
 
-export const functions = (stateForm, setStateForm, dispatch) => {
+export const functions = (formRef, stateForm, setStateForm, dispatch) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -18,8 +18,6 @@ export const functions = (stateForm, setStateForm, dispatch) => {
             apellidos,
         };
 
-        console.log(nuevaPersona);
-
         dispatch({ type: PERSONAS_TYPES.ADD, payload: nuevaPersona });
 
         setStateForm(initialStateForm);
@@ -29,5 +27,13 @@ export const functions = (stateForm, setStateForm, dispatch) => {
         dispatch({ type: PERSONAS_TYPES.DELETE, payload: idPersona });
     };
 
-    return { handleSubmit, handleDelete };
+    const handleEdit = (idPersona, nombres, apellidos) => {
+        setStateForm({
+            id: idPersona,
+            nombres,
+            apellidos,
+        });
+    };
+
+    return { handleSubmit, handleDelete, handleEdit };
 };

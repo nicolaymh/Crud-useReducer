@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useRef } from 'react';
 import { functions, initialStateForm } from '../helpers/helpers';
 import { useForm } from '../hooks/useForm';
 import {
@@ -9,29 +9,37 @@ import {
 const PersonasContext = createContext();
 
 const PersonasProvider = ({ children }) => {
-    //* useReducer para manejar los estados y acciones:
+    const formRef = useRef();
+
+    //? useReducer para manejar los estados y acciones:
     const [personas, dispatch] = useReducer(
         personasReducer,
         initialStatePersonas,
     );
 
-    //* LLamando al customHook useForm para manejar los inputs:
-    const { stateForm, setStateForm, handleInputChange } =
-        useForm(initialStateForm);
+    //? LLamando al customHook useForm para manejar los inputs:
+    const { stateForm, setStateForm, handleInputChange } = useForm(
+        initialStateForm,
+        formRef,
+    );
 
-    //* Separando funciones a archivo helper: handleSubmit y handleDelete:
-    const { handleSubmit, handleDelete } = functions(
+    //? Separando funciones a archivo helper: handleSubmit y handleDelete:
+    const { handleSubmit, handleDelete, handleEdit } = functions(
+        formRef,
         stateForm,
         setStateForm,
         dispatch,
     );
 
+    //? la data para el context provider:
     const data = {
+        formRef,
         stateForm,
         handleInputChange,
         personas,
         handleSubmit,
         handleDelete,
+        handleEdit,
     };
 
     return (
