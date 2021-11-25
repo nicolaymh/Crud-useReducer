@@ -4,7 +4,7 @@ import { Form } from './Form';
 import { ListaPersonas } from './ListaPersonas';
 
 const CrudApp = () => {
-    const { personas, handleDelete, handleEdit} = useContext(PersonasContext);
+    const { personas, handleDelete, handleEdit } = useContext(PersonasContext);
 
     return (
         <div>

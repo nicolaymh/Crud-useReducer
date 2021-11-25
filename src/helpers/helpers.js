@@ -6,7 +6,7 @@ export const initialStateForm = {
     apellidos: '',
 };
 
-export const functions = (formRef, stateForm, setStateForm, dispatch) => {
+export const functions = (stateForm, setStateForm, dispatch) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
