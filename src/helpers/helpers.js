@@ -13,11 +13,19 @@ export const functions = (
     stateAddEdit,
     setStateAddEdit,
     inputRef,
+    emptyFields,
+    setEmptyFields,
 ) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const { id, nombres, apellidos } = stateForm;
+
+        if (nombres.length === 0 || apellidos.length === 0) {
+            setEmptyFields(true);
+            console.log(id, nombres, apellidos);
+            return;
+        } else setEmptyFields(false);
 
         const nuevaPersonaAdd = {
             id: new Date().getTime(),
@@ -32,7 +40,10 @@ export const functions = (
         };
 
         if (!stateAddEdit) {
-            dispatch({ type: PERSONAS_TYPES.ADD, payload: nuevaPersonaAdd });
+            dispatch({
+                type: PERSONAS_TYPES.ADD,
+                payload: nuevaPersonaAdd,
+            });
             setStateForm(initialStateForm);
         } else {
             dispatch({

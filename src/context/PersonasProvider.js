@@ -20,6 +20,9 @@ const PersonasProvider = ({ children }) => {
     //? useState para controlar si esta añadiendo o agregando una persona
     const [stateAddEdit, setStateAddEdit] = useState(false);
 
+    //? useState para controlar que no se pueda agregar persona con campos vacios del formulario.
+    const [emptyFields, setEmptyFields] = useState(false);
+
     //? LLamando al customHook useForm para manejar los inputs:
     const { stateForm, setStateForm, handleInputChange } =
         useForm(initialStateForm);
@@ -32,6 +35,8 @@ const PersonasProvider = ({ children }) => {
         stateAddEdit,
         setStateAddEdit,
         formRef,
+        emptyFields,
+        setEmptyFields,
     );
 
     //? la data para el context provider:
