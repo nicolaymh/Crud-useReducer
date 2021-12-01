@@ -10,9 +10,9 @@ export const Form = () => {
     } = useContext(PersonasContext);
 
     return (
-        <form ref={formRef} onSubmit={handleSubmit}>
+        <form ref={formRef} onSubmit={handleSubmit} className='d-flex'>
             <input
-                className=''
+                className='form-control mx-1'
                 type='text'
                 placeholder='nombres'
                 autoComplete='off'
@@ -22,7 +22,7 @@ export const Form = () => {
             ></input>
 
             <input
-                className=''
+                className='form-control me-1'
                 type='text'
                 placeholder='apellidos'
                 autoComplete='off'
@@ -31,7 +31,9 @@ export const Form = () => {
                 onChange={handleInputChange}
             ></input>
 
-            <button type='submit'>Add</button>
+            <button className='btn btn-primary' type='submit'>
+                Add
+            </button>
         </form>
     );
 };

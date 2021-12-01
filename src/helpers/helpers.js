@@ -13,9 +13,9 @@ export const functions = (
     stateAddEdit,
     setStateAddEdit,
     inputRef,
-    emptyFields,
     setEmptyFields,
 ) => {
+    //* Funcion para agregar una persona nueva o editada.
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -53,14 +53,18 @@ export const functions = (
             setStateForm(initialStateForm);
             setStateAddEdit(false);
         }
+
+        inputRef.current.children[0].focus();
     };
 
+    //* Funcion para eliminar una persona.
     const handleDelete = (idPersona) => {
         dispatch({ type: PERSONAS_TYPES.DELETE, payload: idPersona });
         setStateAddEdit(false);
         setStateForm(initialStateForm);
     };
 
+    //* Funcion para comenzar a editar una persona.
     const handleEdit = (idPersona, nombres, apellidos) => {
         setStateForm({
             id: idPersona,

@@ -9,23 +9,30 @@ const CrudApp = () => {
         useContext(PersonasContext);
 
     return (
-        <div>
-            <h1>Agregar Persona</h1>
+        <div className='container'>
+            <h1 className='text-center text-muted'>Crud con useReducer</h1>
             <hr />
-            <Form />
 
-            {emptyFields && <Alert />}
+            <div className='row'>
+                <div className='col-12 col-md-6 my-auto mt-2'>
+                    <Form />
 
-            <ul>
-                {personas.map((persona) => (
-                    <ListaPersonas
-                        key={persona.id}
-                        persona={persona}
-                        handleDelete={handleDelete}
-                        handleEdit={handleEdit}
-                    />
-                ))}
-            </ul>
+                    {emptyFields && <Alert />}
+                </div>
+
+                <div className='col-12 col-md-6 my-3 my-md-0'>
+                    <ol className='list-group'>
+                        {personas.map((persona) => (
+                            <ListaPersonas
+                                key={persona.id}
+                                persona={persona}
+                                handleDelete={handleDelete}
+                                handleEdit={handleEdit}
+                            />
+                        ))}
+                    </ol>
+                </div>
+            </div>
         </div>
     );
 };
