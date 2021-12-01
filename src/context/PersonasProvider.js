@@ -17,6 +17,7 @@ const PersonasProvider = ({ children }) => {
         initialStatePersonas,
     );
 
+    //? useState para controlar si esta añadiendo o agregando una persona
     const [stateAddEdit, setStateAddEdit] = useState(false);
 
     //? LLamando al customHook useForm para manejar los inputs:
