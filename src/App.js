@@ -1,6 +1,5 @@
 import CrudApp from './components/CrudApp';
 import PersonasProvider from './context/PersonasProvider';
-import './styles/App.css';
 
 const App = () => {
     return (
