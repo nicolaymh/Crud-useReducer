@@ -48,6 +48,7 @@ const PersonasProvider = ({ children }) => {
         handleDelete,
         handleEdit,
         formRef,
+        emptyFields,
     };
 
     return (
