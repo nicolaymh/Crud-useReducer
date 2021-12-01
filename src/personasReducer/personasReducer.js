@@ -13,15 +13,15 @@ export const personasReducer = (personas, action) => {
             );
 
         case PERSONAS_TYPES.EDITAR:
-            return personas.map((persona) => {
-                return persona.id === action.payload.id
+            return personas.map((persona) =>
+                persona.id === action.payload.id
                     ? {
                           ...persona,
                           nombres: action.payload.nombres,
                           apellidos: action.payload.apellidos,
                       }
-                    : persona;
-            });
+                    : persona,
+            );
 
         default:
             return personas;
