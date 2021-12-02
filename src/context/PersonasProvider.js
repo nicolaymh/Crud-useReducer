@@ -6,6 +6,7 @@ import { personasReducer } from '../personasReducer/personasReducer';
 const PersonasContext = createContext();
 
 const PersonasProvider = ({ children }) => {
+    //? useRef para controlar focus en el input de nombres.
     const formRef = useRef();
 
     //? useReducer para manejar los estados y acciones.
