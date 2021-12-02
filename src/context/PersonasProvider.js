@@ -1,5 +1,6 @@
-import { createContext, useReducer, useRef, useState } from 'react';
+import { createContext, useEffect, useReducer, useRef, useState } from 'react';
 import { functions, initialStateForm } from '../helpers/helpers';
+import { init } from '../helpers/init';
 import { useForm } from '../hooks/useForm';
 import { personasReducer } from '../personasReducer/personasReducer';
 
@@ -10,7 +11,12 @@ const PersonasProvider = ({ children }) => {
     const formRef = useRef();
 
     //? useReducer para manejar los estados y acciones.
-    const [personas, dispatch] = useReducer(personasReducer, []);
+    const [personas, dispatch] = useReducer(personasReducer, [], init);
+
+    //? useEffect para guardar en el localstorage.
+    useEffect(() => {
+        localStorage.setItem('personas', JSON.stringify(personas));
+    }, [personas]);
 
     //? useState para controlar si esta añadiendo o agregando una persona.
     const [stateAddEdit, setStateAddEdit] = useState(false);
