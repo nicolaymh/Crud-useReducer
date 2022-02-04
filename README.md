@@ -12,7 +12,7 @@ _Learning to use the Usereducer hook creating a CRUD using bootstrap with React 
 
 ---
 
-[WEB-SITE](https://countreducer.netlify.app/ 'WEB-SITE')
+[WEB-SITE](https://crudusereducer.netlify.app/ 'WEB-SITE')
 
 <p align="center">
   <img width="300" src="./src/readmeImage/screenshot.PNG">
